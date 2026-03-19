@@ -12,7 +12,7 @@ app.static_folder = "../static"
 def home():
     request_uri = request.path
     date = datetime.now(timezone.utc)
-    return render_template("home.jinja2", request_uri=request_uri, my_function=my_function("Python"), date=date)
+    return render_template("home.jinja2", request_uri=request_uri, my_function=my_function, date=date)
 
 @app.route("/generichttpws/", defaults={"path": ""})
 @app.route("/generichttpws/<path:path>")
