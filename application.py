@@ -1,8 +1,4 @@
-import os, sys
-
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "app"))
-
-from example import app
+from app.example import app
 from waitress import serve
 
 

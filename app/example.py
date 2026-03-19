@@ -1,20 +1,18 @@
 from datetime import datetime, timezone
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 
+from app.my_function import my_function
 
 app = Flask(__name__)
 app.template_folder = "../templates"
 app.static_folder = "../static"
 
-def my_function(name):
-    return "Your function knows you as " + name
-
 @app.route("/")
 def home():
     request_uri = request.path
     date = datetime.now(timezone.utc)
-    return render_template("home.jinja2", request_uri=request_uri, my_function=my_function("Bobcat"), date=date)
+    return render_template("home.jinja2", request_uri=request_uri, my_function=my_function("Python"), date=date)
 
 @app.route("/generichttpws/", defaults={"path": ""})
 @app.route("/generichttpws/<path:path>")

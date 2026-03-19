@@ -1,8 +1,8 @@
 from unittest import TestCase
 
-from example import my_function
+from app.my_function import my_function
 
 
 class TestMyFunction(TestCase):
     def test_my_function(self):
-        self.assertTrue("Bobcat" in my_function("Bobcat"))
+        self.assertTrue("Python" in my_function("Python"))

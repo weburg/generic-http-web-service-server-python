@@ -19,8 +19,7 @@ Install Python 3.
 
 ### IDE (PyCharm) setup
 
-Add [project_root]/app to IDE's Include Path list (right click app folder, then select Mark Directory As -> Sources Root)
-Add [project_root]/tests to IDE's Include Path list (right click app folder, then select Mark Directory As -> Test Sources Root)
+Add [project_root]/tests to IDE's Include Path list (right click tests folder, then select Mark Directory As -> Test Sources Root)
 
 Enable Flask integration in Settings -> Python -> Flask.
 
