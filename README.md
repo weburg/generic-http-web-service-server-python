@@ -17,7 +17,7 @@ We're going to use the cross-platform Waitress WSGI server and rely on Flask to 
 
 Install Python 3.
 
-### IDE (PhpStorm) setup
+### IDE (PyCharm) setup
 
 Add [project_root]/app to IDE's Include Path list (right click app folder, then select Mark Directory As -> Sources Root)
 Add [project_root]/tests to IDE's Include Path list (right click app folder, then select Mark Directory As -> Test Sources Root)
