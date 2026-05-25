@@ -1,4 +1,4 @@
-from app.example import app
+from app.server import app
 from waitress import serve
 
 
