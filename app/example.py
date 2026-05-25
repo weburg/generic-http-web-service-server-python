@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 
 from flask import Flask, render_template, request
 
-from app.domain.omnibus import Omnibus
+from app.example.domain.omnibus import Omnibus
 from app.my_function import my_function
 
 
