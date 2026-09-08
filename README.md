@@ -15,7 +15,7 @@ Routing is provided by Flask. Path parameters are not used. Query string and URI
 
 We're going to use the cross-platform Waitress WSGI server and rely on Flask to be the static HTML server.
 
-Install Python 3.
+Install Python 3.10 or better.
 
 ### IDE (PyCharm) setup
 
