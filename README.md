@@ -40,11 +40,13 @@ If using an IDE, you should only need to run the below file:
 
 Now test the application by going to http://localhost:8081 and make sure everything works.
 
-For development, you can instead ensure you are in app/ and then run:
+For development, ensure you are in the project directory. Run:
 
-`python example.py`
+`python -m app.server`
 
 Or, run it directly from the IDE.
+
+This uses Flask's built-in development server and supports automatic reloading when files change.
 
 Now, test the application by going to http://localhost:5000.
 
