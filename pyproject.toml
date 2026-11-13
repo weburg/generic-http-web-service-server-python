@@ -3,6 +3,6 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "GHoWSt Server"
+name = "ghowst-server"
 version = "1.0.0"
 authors = [{ name = "Wren Weburg" }]
