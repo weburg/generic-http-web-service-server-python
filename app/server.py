@@ -1,6 +1,7 @@
 import json
-from dataclasses import asdict, is_dataclass
+from dataclasses import fields, is_dataclass
 from datetime import datetime, timezone
+from typing import Annotated, get_args, get_origin, get_type_hints
 
 from flask import Flask, render_template, request
 
@@ -13,7 +14,23 @@ def json_default(value):
         return value.isoformat(timespec="milliseconds")
 
     if is_dataclass(value):
-        return asdict(value)
+        annotations = get_type_hints(type(value), include_extras=True)
+        serialized = {}
+        for field in fields(value):
+            field_value = getattr(value, field.name)
+            annotation = annotations.get(field.name)
+            metadata = get_args(annotation)[1:] if get_origin(annotation) is Annotated else ()
+            if isinstance(field_value, datetime):
+                if "localdatetime" in metadata:
+                    if field_value.utcoffset() is not None:
+                        raise ValueError(
+                            f"{type(value).__name__}.{field.name} is a localdatetime "
+                            "and must not include a timezone offset"
+                        )
+                if "localdatetime" in metadata or "offsetdatetime" in metadata:
+                    field_value = field_value.isoformat(timespec="microseconds")
+            serialized[field.name] = field_value
+        return serialized
 
     raise TypeError(f"Object of type {value.__class__.__name__} is not JSON serializable")
 
@@ -47,7 +64,11 @@ def generichttpws(path):
             "Fish": "Chardonnay",
         }
 
-        return json.dumps(omnibus, default=json_default)
+        response = app.response_class(
+            json.dumps(omnibus, default=json_default),
+            mimetype="application/json"
+        )
+        return response
 
     return render_template("generichttpws/home.jinja2", request_uri=request_uri)
 
