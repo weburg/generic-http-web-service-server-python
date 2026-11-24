@@ -17,6 +17,8 @@ def json_default(value):
         annotations = get_type_hints(type(value), include_extras=True)
         serialized = {}
         for field in fields(value):
+            if field.name.startswith("_"):
+                continue
             field_value = getattr(value, field.name)
             annotation = annotations.get(field.name)
             metadata = get_args(annotation)[1:] if get_origin(annotation) is Annotated else ()

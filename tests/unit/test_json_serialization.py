@@ -7,6 +7,16 @@ from app.server import json_default
 
 
 class TestJsonSerialization(TestCase):
+    def test_omnibus_uses_bus_defaults(self):
+        omnibus = Omnibus()
+
+        self.assertEqual("omni-58-87", omnibus._Bus__callsign)
+        self.assertEqual("yellow", omnibus.color)
+
+        serialized = json.dumps(omnibus, default=json_default)
+        self.assertNotIn('"_Bus__callsign"', serialized)
+        self.assertIn('"color": "yellow"', serialized)
+
     def test_omnibus_datetime_fields_use_microseconds(self):
         omnibus = Omnibus(
             birthtime=datetime.fromisoformat("2016-05-11T12:00:00"),
