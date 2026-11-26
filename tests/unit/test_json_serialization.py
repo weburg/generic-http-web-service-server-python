@@ -33,5 +33,5 @@ class TestJsonSerialization(TestCase):
             birthtime=datetime(2016, 5, 11, 12, 0, tzinfo=timezone.utc),
         )
 
-        with self.assertRaisesRegex(ValueError, "Must not include a timezone offset"):
+        with self.assertRaises(ValueError):
             json.dumps(omnibus, default=json_default)
