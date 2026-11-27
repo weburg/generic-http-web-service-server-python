@@ -53,7 +53,7 @@ def generichttpws(path):
     request_uri = request.path
     if path == "engines":
         return render_template("generichttpws/engines.jinja2", request_uri=request_uri)
-    elif path == "omnibus":
+    elif path == "omnibusses":
         omnibus = Omnibus()
         omnibus.birthtime = datetime.fromisoformat("2016-05-11T12:00:00.000")
         omnibus.sendtime = datetime.now(timezone.utc)
